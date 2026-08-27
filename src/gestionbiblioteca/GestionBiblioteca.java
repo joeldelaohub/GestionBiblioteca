@@ -1,8 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package gestionbiblioteca;
+
+import java.util.Scanner;
+import menus.Menus;
 
 /**
  *
@@ -15,6 +14,10 @@ public class GestionBiblioteca {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Scanner entrada = new Scanner(System.in);
+        Menus.MainMenu(entrada);
+        
+        entrada.close();
     }
     
 }
