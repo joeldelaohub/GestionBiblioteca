@@ -1,6 +1,8 @@
 package menus;
 
+import auth.Auth;
 import java.util.Scanner;
+import usuario.GestionUsuarios;
 
 /**
  *
@@ -18,7 +20,7 @@ public class Menus {
      * @param titulo titulo que llevara el menu
      * @param opciones donde se almacenan las opciones
      */
-    public static void createMenu(String titulo, String[] opciones) {
+    private static void createMenu(String titulo, String[] opciones) {
         System.out.printf("----- %s -----%n", titulo);
         for(int i = 0; i <opciones.length; i++) {
             if(i == opciones.length - 1)
@@ -32,6 +34,8 @@ public class Menus {
         String[] opcionesMain = {"Iniciar Sesion", "Registrarse", "Finalizar programa"};
         int opcion = -1;
         
+        
+        
         do {
             Menus.createMenu("Bienvenido a la Biblioteca Online", opcionesMain);
             System.out.print("Elija una opcion: ");
@@ -40,14 +44,46 @@ public class Menus {
             
             switch(opcion) {
                 case 1:
+                    Auth.iniciarSesion(entrada);
                     System.out.println("Iniciando sesion...");
+                    menuBiblioteca(entrada);
                     break;
                 case 2:
+                    Auth.registrar(entrada);
                     System.out.println("Registrando...");
+                    GestionUsuarios.guardarUsuarios();
                     break;
                 case 0:
                     System.out.println("Saliendo del programa...");
             }
+        }while(opcion != 0);
+    }
+    
+    public static void menuBiblioteca(Scanner entrada) {
+        String[] opcionesBiblioteca = {"Ver libreria", "Hacer un prestamo", "Devolver libro", "Salir"};
+        int opcion = -1;
+        
+        do {
+            
+            Menus.createMenu("Biblioteca Online ", opcionesBiblioteca);
+            System.out.print("Elija una opcion: ");
+            opcion = entrada.nextInt();
+            entrada.nextLine();
+            
+            switch(opcion) {
+                case 1:
+                    System.out.println("Mostrando libreria...");
+                    break;
+                case 2:
+                    System.out.println("Haciendo un prestamo...");
+                    break;
+                case 3:
+                    System.out.println("Devolviendo el libro...");
+                    break;
+                case 0:
+                    System.out.println("Saliendo...");
+            }
+            
         }while(opcion != 0);
     }
 }

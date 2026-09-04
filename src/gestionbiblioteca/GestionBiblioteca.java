@@ -2,6 +2,7 @@ package gestionbiblioteca;
 
 import java.util.Scanner;
 import menus.Menus;
+import usuario.GestionUsuarios;
 
 /**
  *
@@ -15,9 +16,11 @@ public class GestionBiblioteca {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner entrada = new Scanner(System.in);
+        
+        GestionUsuarios.leerUsuarios();
+        
         Menus.MainMenu(entrada);
         
-        entrada.close();
     }
     
 }
